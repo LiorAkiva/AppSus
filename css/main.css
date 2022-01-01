@@ -9,3 +9,9 @@
 @import './apps/keep/keep-main.css';
 @import '../css/apps/mail/mail-list.css';
 @import '../css//apps/mail/mail-preview.css';
+
+@import '../css/apps/mail/mail-list.css';
+@import '../css//apps/mail/mail-preview.css';
+@import '../css/apps/mail/compose.css';
+@import '../css//apps//mail//mail-app.css';
+@import '../css/apps/mail/edit-mail.css';

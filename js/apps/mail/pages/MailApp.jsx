@@ -1,30 +1,31 @@
-import { mailService } from '../services/mail.service.js'
 // import { eventBusService } from '../services/event-bus.service.js'
+import { mailService } from '../services/mail.service.js'
 import { Loader } from '../cmps/Loader.jsx'
 import { MailList } from '../cmps/MailList.jsx'
-// import { MailFilter } from '../cmps/MailFilter.jsx'
-// import { Compose } from '../cmps/Compose.jsx'
-import { MailCompose } from '../cmps/MailCompose.jsx'
-import { func } from 'prop-types'
-
+import { Compose } from '../cmps/Compose.jsx'
+import { EditMail } from '../cmps/EditMail.jsx'
 const { NavLink, Route } = ReactRouterDOM
 
 export class MailApp extends React.Component {
 
     state = {
         mails: null,
-        filterBy: null,
-
+        filterBy: 'inbox',
+        isMailShown: false,
+        refreshState: true,
+        isComposing: false,
+        isUpdating: false,
+        isReading: false
     }
 
     componentDidMount() {
         this.loadMails()
     }
 
-    get ctgSearchParam() {
-        const urlSearchParams = new URLSearchParams(this.props.location.search)
-        return urlSearchParams.get('ctg')
-    }
+    // get ctgSearchParam() {
+    //     const urlSearchParams = new URLSearchParams(this.props.location.search)
+    //     return urlSearchParams.get('ctg')
+    // }
 
     get mailsToDisplay() {
         const { mails } = this.state
@@ -33,29 +34,31 @@ export class MailApp extends React.Component {
         return mails
     }
 
-
-    // loadMails = () => {
-    //     const { filterBy } = this.state
-    //     mailService.query(filterBy).then(mails => {
-    //         eventBusService.emit('mails-count', mails.length)
-    //         this.setState({ mails })
-    //     })
-    // }
+    
     loadMails = () => {
-        mailService.query().then(mails => {
+        // console.log(' i am in loadmails')
+
+        mailService.query(this.state.filterBy).then(mails => {
             // eventBusService.emit('mails-count', mails.length)
             this.setState({ mails })
         })
     }
 
-    onSetFilter = (filterBy) => {
-        this.setState({ filterBy }, this.loadMails)
-    }
-
-    // onCompose = () => {
-    //     mailService.composeMail()
-    // }
    
+    onSetFilter = (ev) => {
+        const filterBy = ev.target.getAttribute('data-filter-by')
+        console.log('onSetFilter is activated')
+        console.log('filterBy', filterBy)
+        this.setState({ filterBy }, this.loadMails)
+
+    }
+    onOpenMail = () => { this.setState({ isMailShown: true }) }
+    onRemoveMail = () => { this.loadMails() }
+    toggleComposeBox = () => { this.setState({ isMailShown: !this.state.isMailShown }) }
+    onAddMail = () => {
+        this.loadMails()
+        this.toggleComposeBox()
+    }
 
     render() {
         const { mails } = this.state
@@ -63,32 +66,19 @@ export class MailApp extends React.Component {
         if (!mails) return <Loader />
         return (
             <section className="mail-app">
-                {/* <h1>Mail App:</h1><button onClick={this.onCompose}>Compose</button> */}
-                <NavLink activeClassName="my-active" to="/mail/compose"><button>Compose</button></NavLink>
-                <Route component={Compose} path="/mail/compose" />
-                {/* <MailCompose /> */}
-                {/* <MailFilter onSetFilter={this.onSetFilter} /> */}
+                {/* <EditMail/> */}
+                <Compose isUpdating={this.state.isUpdating} isMailShown={this.state.isMailShown} onAddMail={this.onAddMail} />
+                <div className="side-nav">
+                    <button onClick={this.toggleComposeBox}>Compose</button>
+                    <button data-filter-by='inbox' onClick={this.onSetFilter}>Inbox</button>
+                    <button data-filter-by='sent' onClick={this.onSetFilter}>Sent</button>
+                    <button data-filter-by='starred' onClick={this.onSetFilter}>Starred</button>
+                    <button data-filter-by='draft' onClick={this.onSetFilter}>Draft</button>
+                </div>
                 {/* <Link className="primary-btn clean-link" to="/mail/edit">Add mail</Link> */}
-                {/* <Compose /> */}
-                <MailList mails={this.mailsToDisplay} />
+                <MailList mails={this.mailsToDisplay} onRemoveMail={this.onRemoveMail} onOpenMail={this.onOpenMail} />
             </section>
         )
     }
 }
 
-function Compose() {
-    return <section>
-        <form>
-            <label htmlFor="email">To: <input type="email" name="email" id="email" /></label>           
-            <label htmlFor="subject">Subject: <input type="text" name="subject" id="subject" /></label>
-            <textarea name="body" id="body" cols="30" rows="10"></textarea>
-            <button onClick={goToMail()}>send</button>
-            <h3>link to notes</h3>
-        </form>
-    </section>
-
-}
-
-function goToMail(){
-    
-}

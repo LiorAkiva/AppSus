@@ -1,0 +1,30 @@
+.compose-mail-form{
+    background-color: rgb(218, 206, 206);
+    border: rgb(12, 5, 5) solid 3px;
+    position: fixed;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2em;
+    gap: 1em;
+    box-shadow: 0px 0px 0px 1125px rgba(0,0,0,0.74);
+-webkit-box-shadow: 0px 0px 0px 1125px rgba(0,0,0,0.74);
+-moz-box-shadow: 0px 0px 0px 1125px rgba(0,0,0,0.74);
+}
+.compose-mail-form textarea{
+    width: 100%;
+     font-size: 2em;
+    }
+  
+    .hidden{
+        display: none;
+}
+.compose-mail-form button{
+    width: fit-content;
+    border-radius: 0.5em;
+}

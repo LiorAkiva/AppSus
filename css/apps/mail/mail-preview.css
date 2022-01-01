@@ -1,4 +1,30 @@
 .mail-preview{
     border: black solid 1px;
-    background-color: blanchedalmond;
+    background-color: rgba(204, 204, 204, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    
+
+
+}
+.mail-preview:hover{
+    opacity: 80%;
+    cursor: pointer;
+}
+.mail-preview .mail-previev-btns{
+    display: flex;
+      
+}
+.mail-preview .mail-previev-btns btn:hover{
+    
+     cursor: pointer; 
+}
+.mail-preview .icon{
+    width: 3em;
+    height: 3em;
 }

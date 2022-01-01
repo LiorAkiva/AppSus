@@ -1,0 +1,22 @@
+.mail-app{
+    padding: 2em;
+    display: flex;
+    gap: 1em;
+    box-shadow: 0px 0px 26px 6px rgba(0,0,0,0.46) inset;
+    -webkit-box-shadow: 0px 0px 26px 6px rgba(0,0,0,0.46) inset;
+    -moz-box-shadow: 0px 0px 26px 6px rgba(0,0,0,0.46) inset;
+    flex-grow: 1;
+}
+.mail-app .side-nav{
+
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    /* position: fixed; */
+}
+.mail-app button{
+    padding: 1em;
+}
+.mail-app button:hover{
+    opacity: 80%;
+}
