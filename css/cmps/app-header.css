@@ -1,0 +1,43 @@
+
+.app-header{
+    margin-top: 0px;
+}
+
+
+.header-container {
+    width: 100%;
+    height: 70px;
+    background-color: rgb(252, 252, 252);
+    margin-bottom: 10px;
+}
+
+.logo{
+    padding:10px;
+    
+}
+
+.logo:hover{
+    cursor: pointer;
+}
+
+.app-nav{
+    list-style-type: none;
+    width: 25%;
+    font-size: 1.05em;
+    margin: 0;
+    padding: 0;
+}
+
+.app-nav > *:not(:last-child) {
+    margin-inline-end: 40px;
+}
+
+.nav-btn{
+    background-color: rgb(223, 226, 175);
+    color: rgb(29, 26, 26);
+    padding: 5px 13px;
+    border-radius: 2em;
+    transition: 0.5s;
+    outline: none;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.137);
+}

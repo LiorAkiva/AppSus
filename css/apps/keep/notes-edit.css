@@ -1,0 +1,49 @@
+.edit-note{
+    opacity:0;
+}
+/* 
+.edit-note:hover{
+    opacity: 1;
+} */
+
+.edit-btn{
+    cursor: pointer;
+}
+
+.colors {
+    position: relative;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin:0.5em;
+}
+
+.color-box  {
+    position: absolute;
+    width: 140px;
+    background-color: rgb(235, 219, 219);
+    display: none;
+    top: -95px;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.colors:hover .color-box  {
+    display: grid;
+    grid-template-columns: repeat(4, 25px);
+    grid-template-rows: repeat(3, 25px);
+    justify-content: space-around;
+    gap: 6px;
+}
+
+.color-box >div {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.color-box >div:hover {
+    border: 1px solid rgb(48, 39, 39);
+}

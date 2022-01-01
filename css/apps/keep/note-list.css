@@ -1,0 +1,20 @@
+.note-list{
+    columns: auto 290px;
+    justify-content: center;
+    justify-items: center;
+    margin: 20px;
+}
+
+.note-container{
+    font-family: 'Balsamiq' ;
+    /* max-width: 1300px; */
+    margin:auto;
+}
+
+@media (min-width:560px) {
+    .note-container{
+        max-width: 1300px;
+
+    }
+}
+

@@ -1,0 +1,66 @@
+.note-preview {
+    width: 300px;
+    margin: 0 auto 20px;
+    break-inside: avoid;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 10px;
+    font-family: 'Balsamiq' ;
+    color: rgb(48, 39, 39);
+}
+
+.note-preview:hover{
+    box-shadow: 0 0 5px 0px rgb(48, 39, 39);
+}
+
+.note-preview:hover .edit-note{
+    opacity: 1;
+}
+
+li{
+    list-style-type: circle;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.undone{
+    text-decoration: none;
+}
+
+.note-preview img {
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.note-preview iframe {
+    height: 250px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+
+.edit-note{
+    text-align: center;
+    justify-content: space-between;
+}
+
+.edit-btn{
+    margin:0.5em;
+    border: none;
+    background-color: transparent;
+    color: rgb(48, 39, 39);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    align-content: center;
+    align-items: center;
+}
+
+.edit-btn:hover{
+    background-color: rgb(247, 235, 247);
+}
